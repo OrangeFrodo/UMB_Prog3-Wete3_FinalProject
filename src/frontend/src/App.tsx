@@ -10,7 +10,7 @@ import ListEmployee from './components/ListEmployee';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <ListEmployee />
     </div>
   );
