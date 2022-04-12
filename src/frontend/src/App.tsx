@@ -13,8 +13,8 @@ function App() {
         <div className='container'>
           <Header />
           <Routes>
-            <Route path="/employee" element={<h1>Hello</h1>} />
             <Route path="/" element={<ListEmployee />} />
+            <Route path="/employee" element={<h1>Hello</h1>} />
           </Routes>
           <Footer />
         </div>
