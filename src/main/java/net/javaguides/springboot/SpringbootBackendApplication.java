@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootBackendApplication implements CommandLineRunner {
+public class SpringbootBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootBackendApplication.class, args);
@@ -17,6 +17,7 @@ public class SpringbootBackendApplication implements CommandLineRunner {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
+	/*
 	@Override
 	public void run(String... args) throws Exception {
 		Employee employee = new Employee();
@@ -27,4 +28,5 @@ public class SpringbootBackendApplication implements CommandLineRunner {
 		employee.setProject("Backend development");
 		employeeRepository.save(employee);
 	}
+	*/
 }
