@@ -1,18 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-
-// Import bootstrap css
-import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 
 import ListEmployee from './components/ListEmployee';
 
 function App() {
   return (
-    <div>
-      <ListEmployee />
-    </div>
+    <>
+      <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path="/employee" element={<h1>Hello</h1>} />
+            <Route path="/" element={<ListEmployee />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
 }
 

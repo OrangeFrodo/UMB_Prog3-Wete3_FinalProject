@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import EmployeeServices from '../services/EmployeeServices';
 
 const ListEmployee = () => {
     // Use state to store the list of employees
     const [employees, setEmployees] = useState<any[]>([]);
 
+    useEffect(() => {
+        EmployeeServices.getAllEmployees().then(response => {
+            setEmployees(response.data);
+            console.log(response.data);
+        })
+    }, [])
 
     return (
         <div className='container'>
@@ -14,6 +21,8 @@ const ListEmployee = () => {
                     <th>Employee First Name</th>
                     <th>Employee Last Name</th>
                     <th>Employee Email Id</th>
+                    <th>Employee Hours</th>
+                    <th>Employee Project</th>
                 </thead>
                 <tbody>
                     {
@@ -24,6 +33,8 @@ const ListEmployee = () => {
                                     <td>{employee.firstName}</td>
                                     <td>{employee.lastName}</td>
                                     <td>{employee.emailId}</td>
+                                    <td>{employee.hours}</td>
+                                    <td>{employee.project}</td>
                                 </tr>
                             )
                         })

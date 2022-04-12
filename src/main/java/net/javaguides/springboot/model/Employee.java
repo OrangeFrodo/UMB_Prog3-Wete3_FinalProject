@@ -27,4 +27,10 @@ public class Employee {
 
     @Column(name = "email_id")
     private String emailId;
+
+    @Column(name = "working_hours")
+    private String hours;
+
+    @Column(name = "project")
+    private String project;
 }

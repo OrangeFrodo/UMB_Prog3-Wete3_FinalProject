@@ -23,6 +23,8 @@ public class SpringbootBackendApplication implements CommandLineRunner {
 		employee.setFirstName("Jakub");
 		employee.setLastName("Daxner");
 		employee.setEmailId("daxoja@gmail.com");
+		employee.setHours("5");
+		employee.setProject("Backend development");
 		employeeRepository.save(employee);
 	}
 }
