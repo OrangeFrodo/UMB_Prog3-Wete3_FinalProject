@@ -1,3 +1,4 @@
+import { Alert } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import EmployeeServices from '../services/EmployeeServices';
@@ -25,13 +26,12 @@ const AddEmployee = () => {
         if (id) {
             EmployeeServices.updateEmployee(id, employee)
                 .then((res) => {
-                    
+
                 })
                 .catch((err) => {
                     console.log(err)
                 })
         } else {
-
             // Call employee services to save the employee
             EmployeeServices.createEmployee(employee)
                 .then(response => {
@@ -42,6 +42,7 @@ const AddEmployee = () => {
                 })
         }
     }
+
 
     useEffect(() => {
         EmployeeServices.getEmployeeById(id)
@@ -77,7 +78,7 @@ const AddEmployee = () => {
         <div>
             <div className='container'>
                 <div className='card col-md-6 offset-md-3 offset-md-3'>
-                    <h2 className='text-center mt-4'>{title}</h2>
+                    <h2 className='text-center mt-4'>{title()}</h2>
                     <div className='card-body'>
                         <form>
                             <div className='form-group mb-2'>

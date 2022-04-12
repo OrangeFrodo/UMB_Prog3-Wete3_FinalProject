@@ -7,11 +7,24 @@ const ListEmployee = () => {
     const [employees, setEmployees] = useState<any[]>([]);
 
     useEffect(() => {
+        getAllEmployees()
+    }, [])
+
+    const getAllEmployees = () => {
         EmployeeServices.getAllEmployees().then(response => {
             setEmployees(response.data);
             console.log(response.data);
         })
-    }, [])
+    }
+
+    const deleteEmployee = (id: any) => {
+        EmployeeServices.deleteEmployee(id)
+            .then((res) => {
+                getAllEmployees()
+            }).catch((err) => {
+                console.log(err)
+            })
+    }
 
     return (
         <div className='container'>
@@ -42,6 +55,7 @@ const ListEmployee = () => {
                                     <td>{employee.project}</td>
                                     <td>
                                         <Link className='btn btn-info' to={`/edit-employee/${employee.id}`}>Update</Link>
+                                        <Link style={{margin: 5}} className='btn btn-danger' to={"/"} onClick={() => deleteEmployee(employee.id)}>Delete</Link>
                                     </td>
                                 </tr>
                             )
