@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+import EmployeeServices from '../services/EmployeeServices';
 
 const AddEmployee = () => {
     const [firstName, setFirstName] = useState("");
@@ -10,6 +12,7 @@ const AddEmployee = () => {
     const saveEmployee = (e: any) => {
         e.preventDefault();
 
+        // Employee object
         const employee = {
             firstName,
             lastName,
@@ -18,7 +21,14 @@ const AddEmployee = () => {
             project
         }
 
-        console.log(employee)
+        // Call employee services to save the employee
+        EmployeeServices.createEmployee(employee)
+            .then(response => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     return (
@@ -30,60 +40,61 @@ const AddEmployee = () => {
                         <form>
                             <div className='form-group mb-2'>
                                 <label>First Name</label>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     placeholder='Enter first name'
-                                    className='form-control' 
+                                    className='form-control'
                                     name='firstName'
-                                    value={firstName} 
-                                    onChange={(e) => setFirstName(e.target.value)} 
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
                             </div>
                             <div className='form-group mb-2'>
                                 <label>Last Name</label>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     placeholder='Enter last name'
-                                    className='form-control' 
+                                    className='form-control'
                                     name='lastName'
-                                    value={lastName} 
-                                    onChange={(e) => setLastName(e.target.value)} 
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </div>
                             <div className='form-group mb-2'>
                                 <label>Email</label>
-                                <input 
+                                <input
                                     type="email"
-                                    placeholder='Enter email' 
-                                    className='form-control' 
+                                    placeholder='Enter email'
+                                    className='form-control'
                                     name='emailId'
-                                    value={emailId} 
-                                    onChange={(e) => setEmailId(e.target.value)} 
+                                    value={emailId}
+                                    onChange={(e) => setEmailId(e.target.value)}
                                 />
                             </div>
                             <div className='form-group mb-2'>
                                 <label>Hours worked</label>
-                                <input 
+                                <input
                                     type="text"
-                                    placeholder='Enter hours worked on a project' 
-                                    className='form-control' 
+                                    placeholder='Enter hours worked on a project'
+                                    className='form-control'
                                     name='hours'
-                                    value={hours} 
-                                    onChange={(e) => setHours(e.target.value)} 
+                                    value={hours}
+                                    onChange={(e) => setHours(e.target.value)}
                                 />
                             </div>
                             <div className='form-group mb-2'>
                                 <label>Name of a project</label>
-                                <input 
+                                <input
                                     type="text"
-                                    placeholder='Enter name of a project' 
-                                    className='form-control' 
+                                    placeholder='Enter name of a project'
+                                    className='form-control'
                                     name='project'
-                                    value={project} 
-                                    onChange={(e) => setProject(e.target.value)} 
+                                    value={project}
+                                    onChange={(e) => setProject(e.target.value)}
                                 />
                             </div>
-                            <button className='btn btn-success' onClick={(e) => saveEmployee(e) }>Add Employee</button>
+                            <button className='btn btn-success' onClick={(e) => saveEmployee(e)}>Add Employee</button>
+                            <Link to="/employee" className='btn btn-danger'>Cancel</Link>
                         </form>
                     </div>
                 </div>

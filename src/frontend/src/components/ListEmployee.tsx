@@ -19,12 +19,14 @@ const ListEmployee = () => {
             <Link to="/add-employee" className="btn btn-primary mb-2">Add Employee</Link>
             <table className='table table-bordered table-striped'>
                 <thead>
-                    <th>Employee Id</th>
-                    <th>Employee First Name</th>
-                    <th>Employee Last Name</th>
-                    <th>Employee Email Id</th>
-                    <th>Employee Hours</th>
-                    <th>Employee Project</th>
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Employee First Name</th>
+                        <th>Employee Last Name</th>
+                        <th>Employee Email Id</th>
+                        <th>Employee Hours</th>
+                        <th>Employee Project</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {
