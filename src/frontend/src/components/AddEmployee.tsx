@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import EmployeeServices from '../services/EmployeeServices';
 
 const AddEmployee = () => {
@@ -9,9 +9,10 @@ const AddEmployee = () => {
     const [hours, setHours] = useState("");
     const [project, setProject] = useState("");
 
-    const saveEmployee = (e: any) => {
-        e.preventDefault();
+    const { id } = useParams();
 
+    const saveOrUpdateEmployee = (e: any) => {
+        e.preventDefault();
         // Employee object
         const employee = {
             firstName,
@@ -21,21 +22,62 @@ const AddEmployee = () => {
             project
         }
 
-        // Call employee services to save the employee
-        EmployeeServices.createEmployee(employee)
+        if (id) {
+            EmployeeServices.updateEmployee(id, employee)
+                .then((res) => {
+                    
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else {
+
+            // Call employee services to save the employee
+            EmployeeServices.createEmployee(employee)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    }
+
+    useEffect(() => {
+        EmployeeServices.getEmployeeById(id)
             .then(response => {
-                console.log(response);
+                setFirstName(response.data.firstName);
+                setLastName(response.data.lastName);
+                setEmailId(response.data.emailId);
+                setHours(response.data.hours);
+                setProject(response.data.project);
             })
             .catch((err) => {
                 console.log(err);
             })
+    }, [])
+
+    const title = () => {
+        if (id) {
+            return <h1>Update Employee</h1>
+        } else {
+            return <h1>Add Employee</h1>
+        }
     }
 
+    const buttonText = () => {
+        if (id) {
+            return <button className="btn btn-primary" onClick={(e) => saveOrUpdateEmployee(e)}>Update</button>
+        }
+        else {
+            return <button className='btn btn-success' onClick={(e) => saveOrUpdateEmployee(e)}>Add Employee</button>
+        }
+    }
     return (
         <div>
             <div className='container'>
                 <div className='card col-md-6 offset-md-3 offset-md-3'>
-                    <h2 className='text-center mt-4'>Add employee</h2>
+                    <h2 className='text-center mt-4'>{title}</h2>
                     <div className='card-body'>
                         <form>
                             <div className='form-group mb-2'>
@@ -93,7 +135,7 @@ const AddEmployee = () => {
                                     onChange={(e) => setProject(e.target.value)}
                                 />
                             </div>
-                            <button className='btn btn-success' onClick={(e) => saveEmployee(e)}>Add Employee</button>
+                            {buttonText()}
                             <Link to="/employee" className='btn btn-danger'>Cancel</Link>
                         </form>
                     </div>

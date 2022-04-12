@@ -26,6 +26,7 @@ const ListEmployee = () => {
                         <th>Employee Email Id</th>
                         <th>Employee Hours</th>
                         <th>Employee Project</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,9 @@ const ListEmployee = () => {
                                     <td>{employee.emailId}</td>
                                     <td>{employee.hours}</td>
                                     <td>{employee.project}</td>
+                                    <td>
+                                        <Link className='btn btn-info' to={`/edit-employee/${employee.id}`}>Update</Link>
+                                    </td>
                                 </tr>
                             )
                         })
