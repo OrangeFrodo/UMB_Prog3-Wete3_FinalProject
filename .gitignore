@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Database ###
-../springboot-backend/src/main/resources/application.properties
+.application.properties
