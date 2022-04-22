@@ -1,10 +1,19 @@
 package net.javaguides.springboot.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import net.javaguides.springboot.exception.ResourceNotFoundException;
+import net.javaguides.springboot.model.Employee;
+import net.javaguides.springboot.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/employees")
+@CrossOrigin("*")
 public class EmployeeController {
-<<<<<<< HEAD
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -67,6 +76,4 @@ public class EmployeeController {
         // Delete
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-=======
->>>>>>> parent of b9e2cf9... Employee controller
 }

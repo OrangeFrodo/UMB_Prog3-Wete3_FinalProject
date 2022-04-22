@@ -27,7 +27,6 @@ public class Employee {
 
     @Column(name = "email_id")
     private String emailId;
-<<<<<<< HEAD
 
     @Column(name = "working_hours")
     private String hours;
@@ -38,6 +37,4 @@ public class Employee {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "employer_id")
     private Employer employer;
-=======
->>>>>>> parent of b9e2cf9... Employee controller
 }
