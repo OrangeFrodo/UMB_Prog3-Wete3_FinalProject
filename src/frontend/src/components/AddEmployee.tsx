@@ -9,6 +9,7 @@ const AddEmployee = () => {
     const [emailId, setEmailId] = useState("");
     const [hours, setHours] = useState("");
     const [project, setProject] = useState("");
+    const [firm, setFirm] = useState("");
 
     const { id } = useParams();
 
@@ -20,7 +21,8 @@ const AddEmployee = () => {
             lastName,
             emailId,
             hours,
-            project
+            project,
+            firm
         }
 
         if (id) {
@@ -52,6 +54,7 @@ const AddEmployee = () => {
                 setEmailId(response.data.emailId);
                 setHours(response.data.hours);
                 setProject(response.data.project);
+                setFirm(response.data.firm.name);
             })
             .catch((err) => {
                 console.log(err);
@@ -134,6 +137,17 @@ const AddEmployee = () => {
                                     name='project'
                                     value={project}
                                     onChange={(e) => setProject(e.target.value)}
+                                />
+                            </div>
+                            <div className='form-group mb-2'>
+                                <label>Name of a firm</label>
+                                <input
+                                    type="text"
+                                    placeholder='Enter name of a project'
+                                    className='form-control'
+                                    name='project'
+                                    value={firm}
+                                    onChange={(e) => setFirm(e.target.value)}
                                 />
                             </div>
                             {buttonText()}

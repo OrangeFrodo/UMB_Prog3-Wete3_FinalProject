@@ -33,4 +33,8 @@ public class Employee {
 
     @Column(name = "project")
     private String project;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
 }
