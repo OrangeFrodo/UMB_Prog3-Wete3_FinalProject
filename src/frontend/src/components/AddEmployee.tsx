@@ -22,13 +22,17 @@ const AddEmployee = () => {
             emailId,
             hours,
             project,
-            firm
+            employer: {
+                name: firm
+            }
         }
 
         if (id) {
             EmployeeServices.updateEmployee(id, employee)
                 .then((res) => {
-
+                    console.log(res)
+                    // Redirect to home page
+                    window.location.href = "/"
                 })
                 .catch((err) => {
                     console.log(err)
@@ -38,6 +42,7 @@ const AddEmployee = () => {
             EmployeeServices.createEmployee(employee)
                 .then(response => {
                     console.log(response);
+                    window.location.href = "/"
                 })
                 .catch((err) => {
                     console.log(err);
@@ -54,7 +59,7 @@ const AddEmployee = () => {
                 setEmailId(response.data.emailId);
                 setHours(response.data.hours);
                 setProject(response.data.project);
-                setFirm(response.data.firm.name);
+                setFirm(response.data.employer.name);
             })
             .catch((err) => {
                 console.log(err);
