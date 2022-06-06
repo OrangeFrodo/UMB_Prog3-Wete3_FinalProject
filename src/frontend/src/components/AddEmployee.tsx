@@ -10,6 +10,7 @@ const AddEmployee = () => {
     const [hours, setHours] = useState("");
     const [project, setProject] = useState("");
     const [firm, setFirm] = useState("");
+    const [pay, setPay] = useState("");
 
     const { id } = useParams();
 
@@ -22,6 +23,7 @@ const AddEmployee = () => {
             emailId,
             hours,
             project,
+            pay,
             employer: {
                 name: firm
             }
@@ -60,6 +62,7 @@ const AddEmployee = () => {
                 setHours(response.data.hours);
                 setProject(response.data.project);
                 setFirm(response.data.employer.name);
+                setPay(response.data.pay);
             })
             .catch((err) => {
                 console.log(err);
@@ -153,6 +156,17 @@ const AddEmployee = () => {
                                     name='project'
                                     value={firm}
                                     onChange={(e) => setFirm(e.target.value)}
+                                />
+                            </div>
+                            <div className='form-group mb-2'>
+                                <label>Pay of an employee</label>
+                                <input
+                                    type="text"
+                                    placeholder='Enter name of a project'
+                                    className='form-control'
+                                    name='project'
+                                    value={pay}
+                                    onChange={(e) => setPay(e.target.value)}
                                 />
                             </div>
                             {buttonText()}

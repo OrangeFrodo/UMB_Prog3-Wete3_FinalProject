@@ -56,6 +56,7 @@ public class EmployeeController {
         updateEmployee.setHours(employeeDetails.getHours());
         updateEmployee.setEmailId(employeeDetails.getEmailId());
         updateEmployee.setProject(employeeDetails.getProject());
+        updateEmployee.setPay(employeeDetails.getPay());
         updateEmployee.setEmployer(employeeDetails.getEmployer());
 
         employeeRepository.save(updateEmployee);
