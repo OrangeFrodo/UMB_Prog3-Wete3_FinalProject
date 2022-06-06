@@ -21,7 +21,7 @@ public class EmployeeController {
     // Return all employees
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAll() ;
     }
 
     // Build create employee REST API
