@@ -40,6 +40,7 @@ const ListEmployee = () => {
                         <th>Employee Hours</th>
                         <th>Employee Project</th>
                         <th>Employer</th>
+                        <th>Pay</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -55,6 +56,7 @@ const ListEmployee = () => {
                                     <td>{employee.hours}</td>
                                     <td>{employee.project}</td>
                                     <td>{employee.employer.name}</td>
+                                    <td>{employee.pay}</td>
                                     <td>
                                         <Link className='btn btn-info' to={`/edit-employee/${employee.id}`}>Update</Link>
                                         <Link style={{margin: 5}} className='btn btn-danger' to={"/"} onClick={() => deleteEmployee(employee.id)}>Delete</Link>
