@@ -38,7 +38,6 @@ public class Employee {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "employer_id")
     private Employer employer;
-
     @Column(name = "pay")
     private String pay;
 }
